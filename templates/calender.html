@@ -1,0 +1,252 @@
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    </head>
+    <script>
+    </script>
+    <style>
+        ul {list-style-type: none;}
+
+        .month {    
+            padding: 2% 0%;
+            width: 42%;
+            background: #000000;
+            text-align: center;
+            margin-left: 12%;
+        }
+
+        .month ul { 
+            margin: 0;
+            padding: 0;
+        }
+
+        .month ul li {  
+            color: white;
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .month .prev {  
+            float: left;
+            padding-top: 10px;
+        }
+        
+        .month .next {  
+            float: right;
+            padding-top: 10px;
+        }
+
+        .weekdays { 
+            width: 42%;
+            margin: 0;
+            padding: 1% 0%;
+            margin-left: 12%;
+            background-color: #ddd;
+        }
+
+        .weekdays li {  
+            display: inline-block;
+            width: 7%;
+            color: #666;
+            text-align: center;
+            margin-right: 3%;
+            margin-left: 3%;
+        }
+
+        .days { 
+            width: 42%;
+            padding: 1% 0;
+            background: #eee;
+            margin: 0;
+            height: 20%;
+            margin-left: 12%;
+        }
+
+        .days li {  
+            list-style-type: none;
+            display: inline-block;
+            width: 9.2%;
+            text-align: center;
+            margin-bottom: 2%;
+            margin-right: 2%;
+            margin-left: 2%;
+            font-size:100% ;
+            color: #777;
+        }
+        button{
+            border: none;
+            width: max-content;
+        }
+
+        .days li .active {  
+            padding: 10%;
+            background: #000000;
+            color: white !important;
+            border-radius:100%;
+            border-width: 50%;
+        }
+        .singdig {  
+            padding-left : 17%;
+            padding-top: 10%;
+            padding-right: 17%;
+            padding-bottom: 10%;
+            background: #000000;
+            color: white !important;
+            border-radius:100%;
+            border-width: 1%;
+        }
+
+        /* Add media queries for smaller screens */
+        @media screen and (max-width:720px) {
+           .weekdays li, .days li {width: 2%;}
+        }
+
+        @media screen and (max-width: 420px) {
+            .weekdays li, .days li {width: 2%;}
+            .days li .active {padding: 0px;}
+        }
+      
+        @media screen and (max-width: 290px) {
+            .weekdays li, .days li {width: 2%;}
+        }
+        body {
+            background-color: black;
+        }
+        .top-right-justify {
+            display: block;
+            margin-left: 1%;
+            padding-top: 1%;
+            margin-right: none;
+        }
+        .signin {
+            margin-top: 5%;
+            text-align: center;
+            border-radius: 1%;
+            background-color: rgb(255, 255, 255);
+            color:rgb(0, 0, 0);
+            border-width: 0px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 100%;
+        }
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+        }
+        .submit {
+            float:left;
+            margin-left: 7in;
+            margin-top: -0.4in;
+            padding-bottom: 0in;
+            color:rgb(255, 255, 255);
+            outline: none;
+            height: 30px;
+            background-color: rgb(0, 0, 0);
+            border-radius: 12px;
+            border-width: 1px;
+            font-size: 15px;
+            border: none;
+        }
+        .submit:focus {
+            border: rgb(255, 255, 255);
+            outline: rgb(255, 255, 255);
+        }
+        .mainframe {
+            background-color: white;
+            position: absolute;
+            margin-left: 37%;
+            margin-right: 37%;
+            margin-top: 4%;
+            width: 25%;
+            height: 50%;
+            text-align: center;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>» Temple Portal </title>
+    <body>
+        <a href="/"><img src = 'https://pringleapi.com/Documents/62196dcd-21f0-4c5e-bb1c-6bf12c59b2fa/Iskcon_Logo.png' href="/" alt="logo" height="13.5%" class="top-right-justify" /></a>
+        <h1>CSS Calendar</h1>
+
+<div class="month">      
+  <ul>
+    <li>
+        <script>const monthNames = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+            const thisMonth = monthNames[(new Date()).getMonth()];
+            document.write(thisMonth)</script><br>
+      <span style="font-size:18px"><script>document.write(/\d{4}/.exec(Date())[0])</script></span>
+    </li>
+  </ul>
+</div>
+
+<ul class="weekdays">
+  <li onclick="">Mo</li>
+  <li>Tu</li>
+  <li>We</li>
+  <li>Th</li>
+  <li>Fr</li>
+  <li>Sa</li>
+  <li>Su</li>
+</ul>
+
+<ul class="days">  
+  <form method="post" id="myForm">
+    <li onclick="makeActiveSing('1'); myForm.submit()" type="submit" name="onee"><span id="1">1</span></li> 
+    <li onclick="makeActiveSing('2')"><span id="2">2</span></li> 
+    <li onclick="makeActiveSing('3')"><span id="3">3</span></li> 
+    <li onclick="makeActiveSing('4')"><span id="4">4</span></li> 
+    <li onclick="makeActiveSing('5')"><span id="5">5</span></li> 
+    <li onclick="makeActiveSing('6')"><span id="6">6</span></li> 
+    <li onclick="makeActiveSing('7')"><span id="7">7</span></li> 
+    <li onclick="makeActiveSing('8')"><span id="8">8</span></li> 
+    <li onclick="makeActiveSing('9')"><span id="9">9</span></li> 
+    <li onclick="makeActive('10')"><span id="10">10</span></li> 
+    <li onclick="makeActive('11')"><span id="11">11</span></li> 
+    <li onclick="makeActive('12')"><span id="12">12</span></li> 
+    <li onclick="makeActive('13')"><span id="13">13</span></li> 
+    <li onclick="makeActive('14')"><span id="14">14</span></li> 
+    <li onclick="makeActive('15')"><span id="15">15</span></li> 
+    <li onclick="makeActive('16')"><span id="16">16</span></li> 
+    <li onclick="makeActive('17')"><span id="17">17</span></li> 
+    <li onclick="makeActive('18')"><span id="18">18</span></li> 
+    <li onclick="makeActive('19')"><span id="19">19</span></li> 
+    <li onclick="makeActive('20')"><span id="20">20</span></li> 
+    <li onclick="makeActive('21')"><span id="21">21</span></li> 
+    <li onclick="makeActive('22')"><span id="22">22</span></li> 
+    <li onclick="makeActive('23')"><span id="23">23</span></li> 
+    <li onclick="makeActive('24')"><span id="24">24</span></li> 
+    <li onclick="makeActive('25')"><span id="25">25</span></li> 
+    <li onclick="makeActive('26')"><span id="26">26</span></li> 
+    <li onclick="makeActive('27')"><span id="27">27</span></li> 
+    <li onclick="makeActive('28')"><span id="28">28</span></li> 
+    <li onclick="makeActive('29')"><span id="29">29</span></li> 
+    <li onclick="makeActive('30')"><span id="30">30</span></li> 
+    <li onclick="makeActive('31')"><span id="31">31</span></li> 
+  </form>
+</ul>
+<script>
+    function makeActiveSing(id){
+        for(i=1; i<32; i++){
+            if(i != parseInt(id)){
+                document.getElementById(i).classList.remove('singdig')
+                document.getElementById(i).classList.remove('active')  
+            }
+        }
+        document.getElementById(id).classList.toggle('singdig')
+    }
+    function makeActive(id){
+        for(i=1; i<32; i++){
+            if(i != parseInt(id)){
+                document.getElementById(i).classList.remove('singdig')
+                document.getElementById(i).classList.remove('active')  
+            }
+        }
+        document.getElementById(id).classList.toggle('active')
+    }
+</script>
+
+    </body>
+</html>
