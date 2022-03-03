@@ -63,6 +63,8 @@ def nextPage():
         return redirect('/')
     if (request.method == 'POST'):
         onVar = request.form['lmfao']
+        if onVar == "on":
+            print("on")
     return render_template('calender.html')
 
 if __name__ == '__main__':
