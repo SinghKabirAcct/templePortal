@@ -62,11 +62,7 @@ def nextPage():
     if 'admin' not in session:
         return redirect('/')
     if (request.method == 'POST'):
-        oneVar = request.form['onee']
-        oneVar = {
-            'value': oneVar
-        }
-        users.users.insert_one(oneVar)
+        onVar = request.form['lmfao']
     return render_template('calender.html')
 
 if __name__ == '__main__':
