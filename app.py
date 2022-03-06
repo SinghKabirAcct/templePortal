@@ -1,27 +1,21 @@
 from logging import debug
 from pymongo import MongoClient
 from flask import Flask, render_template, request, session, url_for, flash, redirect
-client = MongoClient("mongodb+srv://KabirIP:Kss2007@userpass.i0mli.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+import os
+from dotenv import load_dotenv
+from pathlib import Path
+
+load_dotenv(dotenv_path=Path("./lmfao.env"))
+
+mongoclient = os.getenv("mongoclient")
+SECRET_KEY=os.getenv("SECRET_KEY")
+
+client = MongoClient(mongoclient)
 users= client.users
 
 app = Flask(__name__)
 
-kabir = {
-    'username': 'kabir',
-    'password': 'Kss2007!'
-}
-
-app.config['SECRET_KEY'] = '28e1e2bcd63ffb5aaf6f613779122f41906c816b0dafad4f'
-  
-kabir = {
-    'username': 'kabir',
-    'password': 'Kss2007!'
-}
-
-brian = {
-    'username': 'boyaredeez',
-    'password': 'boyaredeez'
-}
+app.config['SECRET_KEY'] = SECRET_KEY
   
 @app.route('/', methods=('GET', 'POST'))
 def templateFunc():
