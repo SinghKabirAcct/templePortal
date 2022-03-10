@@ -26,10 +26,12 @@ def templateFunc():
             'username': user,
             'password': passVar
         }
-        findRes = users.users.find_one(template)
+        findRes = users.users.find_one(template, {'_id': 1})
         if(findRes):
             session['username'] = request.form['user']
             session['password'] = passVar
+            session['id'] = str(findRes)[17:-2]
+            print(session['id'])
             return redirect('next-page')
         else:
             flash("Incorrect Username-Password Combination")
@@ -58,11 +60,17 @@ def signUp():
 def nextPage():
     if ('username' and 'password') not in session:
         return redirect('/')
-    print(session['username'] + '\n' + session['password'])
+    orderList = []
     if (request.method == 'POST'):
-        onVar = request.form['lmfao']
-        if onVar == "lmfao":
-            print("on")
+        lmfao = request.form['lmfao']
+        imo = request.form['imo']
+        if lmfao == "lmfao":
+            orderList.append("lmfao")
+            print("lmfao")
+        if imo == "imo":
+            orderList.append("imo")
+            print("imo")
+        
     return render_template('calender.html')
 
 if __name__ == '__main__':
