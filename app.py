@@ -21,16 +21,15 @@ app.config['SECRET_KEY'] = SECRET_KEY
 def templateFunc():
     if (request.method == 'POST'):
         user = request.form['user']
-        session['username'] = user
         passVar = request.form['pass']
-        session['password'] = passVar
         template = {
             'username': user,
             'password': passVar
         }
         findRes = users.users.find_one(template)
         if(findRes):
-            session['admin'] = request.form['user']
+            session['username'] = request.form['user']
+            session['password'] = passVar
             return redirect('next-page')
         else:
             flash("Incorrect Username-Password Combination")
@@ -57,11 +56,12 @@ def signUp():
 
 @app.route('/next-page', methods=('GET', 'POST'))
 def nextPage():
-    if 'username' not in session:
+    if ('username' and 'password') not in session:
         return redirect('/')
+    print(session['username'] + '\n' + session['password'])
     if (request.method == 'POST'):
         onVar = request.form['lmfao']
-        if onVar == "on":
+        if onVar == "lmfao":
             print("on")
     return render_template('calender.html')
 
