@@ -21,7 +21,9 @@ app.config['SECRET_KEY'] = SECRET_KEY
 def templateFunc():
     if (request.method == 'POST'):
         user = request.form['user']
+        session['username'] = user
         passVar = request.form['pass']
+        session['password'] = passVar
         template = {
             'username': user,
             'password': passVar
