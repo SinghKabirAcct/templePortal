@@ -8,13 +8,6 @@ import os
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = '28e1e2bcd63ffb5aaf6f613779122f41906c816b0dafad4f'
-
-kabir = {
-    'username': 'kabir',
-    'password': 'Kss2007!'
-}
-
 @app.route('/', methods=('GET', 'POST'))
 def templateFunc():
     if (request.method == 'POST'):

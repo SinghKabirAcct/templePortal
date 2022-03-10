@@ -38,7 +38,9 @@ def templateFunc():
 def signUp():
     if (request.method == 'POST'):
         user = request.form['user']
+        session['username'] = user
         passVar = request.form['pass']
+        session['password'] = passVar
         template = {
             'username': user,
             'password': passVar
@@ -53,7 +55,7 @@ def signUp():
 
 @app.route('/next-page', methods=('GET', 'POST'))
 def nextPage():
-    if 'admin' not in session:
+    if 'username' not in session:
         return redirect('/')
     if (request.method == 'POST'):
         onVar = request.form['lmfao']
