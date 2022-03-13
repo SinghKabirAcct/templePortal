@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, session, url_for, flash, redi
 import os
 from dotenv import load_dotenv
 from pathlib import Path
+from bson.objectid import ObjectId
 
 load_dotenv(dotenv_path=Path("./lmfao.env"))
 
@@ -30,7 +31,7 @@ def templateFunc():
         if(findRes):
             session['username'] = request.form['user']
             session['password'] = passVar
-            session['id'] = str(findRes)[15:-2]
+            session['id'] = str(findRes)[18:-3]
             print(session['id'])
             return redirect('next-page')
         else:
@@ -71,8 +72,8 @@ def nextPage():
             orderList.append("imo")
             print("imo")
             print(session['id'])
-        isIn = users.users.find_one({"_id": ObjectId(session['id'])})
-        print(isIn)
+        isIn = users.users.update_one({"_id": ObjectId(session['id'])}, {"$set": {"orders": orderList[0]}}, False, True)
+
     return render_template('calender.html')
 
 if __name__ == '__main__':
