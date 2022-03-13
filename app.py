@@ -30,7 +30,7 @@ def templateFunc():
         if(findRes):
             session['username'] = request.form['user']
             session['password'] = passVar
-            session['id'] = str(findRes)[17:-2]
+            session['id'] = str(findRes)[15:-2]
             print(session['id'])
             return redirect('next-page')
         else:
@@ -70,7 +70,9 @@ def nextPage():
         if imo == "imo":
             orderList.append("imo")
             print("imo")
-        
+            print(session['id'])
+        isIn = users.users.find_one({"_id": ObjectId(session['id'])})
+        print(isIn)
     return render_template('calender.html')
 
 if __name__ == '__main__':
