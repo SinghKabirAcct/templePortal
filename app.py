@@ -69,12 +69,15 @@ def nextPage():
             orderList.append("lmfao")
             print("lmfao")
         if imo == "imo":
-            orderList.append("imo")
+            orderList.append("imods")
             print("imo")
             print(session['id'])
-        isIn = users.users.update_one({"_id": ObjectId(session['id'])}, {"$set": {"orders": orderList[0]}}, False, True)
+        
+        for i in orderList:
+            users.users.update_one({"_id": ObjectId(session['id'])}, {"$push": {"orders": i}}, False, True)
 
     return render_template('calender.html')
+    min()
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3333, debug=True)
