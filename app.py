@@ -75,6 +75,12 @@ def nextPage():
         
         for i in orderList:
             users.users.update_one({"_id": ObjectId(session['id'])}, {"$push": {"orders": i}}, False, True)
+        
+        return redirect('checkout-page')
+
+@app.route('/checkout-page')
+def checkOut():
+    print("")
 
     return render_template('calender.html')
     min()
